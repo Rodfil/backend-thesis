@@ -19,7 +19,7 @@ namespace SkanLogPH_API.API.DataAccess
         public MyDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<MyDbContext>();
-            optionsBuilder.UseSqlServer("Server=LAPTOP-ALB23O4E\\SQLEXPRESS;Database=thesis;Trusted_Connection=True;TrustServerCertificate=True;");
+            optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=thesis;Trusted_Connection=True;TrustServerCertificate=True;");
             //optionsBuilder.UseSqlServer("Server=localhost;Database=SkanlogPHTestDB;Trusted_Connection=True;TrustServerCertificate=True;");
 
             return new MyDbContext(optionsBuilder.Options);

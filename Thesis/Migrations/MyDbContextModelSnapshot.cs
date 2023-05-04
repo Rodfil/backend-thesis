@@ -52,9 +52,6 @@ namespace Thesis.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("RegistrationStatus")
-                        .HasColumnType("bit");
-
                     b.Property<string>("UserType")
                         .HasColumnType("nvarchar(max)");
 

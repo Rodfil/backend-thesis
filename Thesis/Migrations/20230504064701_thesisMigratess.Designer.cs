@@ -12,8 +12,8 @@ using SkanLogPH_API.API.DataAccess;
 namespace Thesis.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20230422131448_rodfilThesis")]
-    partial class rodfilThesis
+    [Migration("20230504064701_thesisMigratess")]
+    partial class thesisMigratess
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,6 +25,47 @@ namespace Thesis.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Thesis.Models.CreateAccount", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Birthdate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ContactNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Firstname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Gender")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Lastname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VoterStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("CreateAccounts");
+                });
+
             modelBuilder.Entity("Thesis.Models.Documents", b =>
                 {
                     b.Property<Guid>("DocumentId")
@@ -32,9 +73,6 @@ namespace Thesis.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("DocumentName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DocumentType")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsVoter")

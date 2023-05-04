@@ -20,7 +20,7 @@ namespace Thesis.Business.Mappers
                 Email = createAccountDTO.Email,
                 Password = createAccountDTO.Password,
                 UserType = createAccountDTO.UserType,
-                RegistrationStatus = createAccountDTO.RegistrationStatus,
+                //RegistrationStatus = createAccountDTO.RegistrationStatus,
             };
 
             return createAccountMain;
@@ -41,7 +41,7 @@ namespace Thesis.Business.Mappers
                 Email = createAccountMain.Email,
                 Password = createAccountMain.Password,
                 UserType = createAccountMain.UserType,
-                RegistrationStatus = createAccountMain.RegistrationStatus,
+                //RegistrationStatus = createAccountMain.RegistrationStatus,
             };
 
             return createAccountDto;
@@ -62,7 +62,7 @@ namespace Thesis.Business.Mappers
                 Email = createAccountPutPostDTO.Email,
                 Password = createAccountPutPostDTO.Password,
                 UserType = createAccountPutPostDTO.UserType,
-                RegistrationStatus = createAccountPutPostDTO.RegistrationStatus,
+                //RegistrationStatus = createAccountPutPostDTO.RegistrationStatus,
             };
 
             return createAccountMain;
@@ -80,7 +80,7 @@ namespace Thesis.Business.Mappers
             createAccountMain.Email = createAccountPutPostDTO.Email;
             createAccountMain.Password = createAccountPutPostDTO.Password;
             createAccountMain.UserType = createAccountPutPostDTO.UserType;
-            createAccountMain.RegistrationStatus = createAccountPutPostDTO.RegistrationStatus;
+            //createAccountMain.RegistrationStatus = createAccountPutPostDTO.RegistrationStatus;
 
             return createAccountMain;
         }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Thesis.Migrations
 {
     /// <inheritdoc />
-    public partial class userAccounts : Migration
+    public partial class thesisMigratess : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -25,12 +25,26 @@ namespace Thesis.Migrations
                     ContactNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    RegistrationStatus = table.Column<bool>(type: "bit", nullable: false)
+                    UserType = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CreateAccounts", x => x.UserId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Documents",
+                columns: table => new
+                {
+                    DocumentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    DocumentName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Price = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsVoter = table.Column<bool>(type: "bit", nullable: false),
+                    NonVoter = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Documents", x => x.DocumentId);
                 });
         }
 
@@ -39,6 +53,9 @@ namespace Thesis.Migrations
         {
             migrationBuilder.DropTable(
                 name: "CreateAccounts");
+
+            migrationBuilder.DropTable(
+                name: "Documents");
         }
     }
 }

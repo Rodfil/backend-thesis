@@ -32,12 +32,19 @@ namespace Thesis.Controllers
             return Ok(createUser);
         }
 
-        [HttpPost]
 
-        public async Task<ActionResult> Login(string email, string password)
+        [HttpPost("authenticate")]
+
+        public async Task<ActionResult<CreateAccountDTO>> AuthenticateUser(CreateAccountDTO createAccountDTO)
         {
-           var loginUser = await _logic.AuthenticateUser(email, password);
-            return Ok(loginUser);
+            var authenticateUser = await _logic.AuthenticateUser(createAccountDTO);
+            if (authenticateUser == null)
+            {
+                return null;
+            }
+
+            return Ok(authenticateUser);   
         }
+
     }
 }

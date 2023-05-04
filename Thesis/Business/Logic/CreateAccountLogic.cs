@@ -26,18 +26,20 @@ namespace Thesis.Business.Logic
         {
             var createAccount = Mappers.CreateAccountMappers.Map(createAccountDTO);
 
+            createAccount.Password = BCrypt.Net.BCrypt.HashPassword(createAccountDTO.Password);
+
             await _context.AddAsync(createAccount);
             await _context.SaveChangesAsync();
 
             return createAccount;
         }
 
-        public async Task<CreateAccountDTO> AuthenticateUser(string email, string password)
+        public async Task<CreateAccountDTO> AuthenticateUser(CreateAccountDTO createAccountDTO)
         {
 
-            var user = await _context.CreateAccounts.SingleOrDefaultAsync(u => u.Email == email && u.Password == password);
+            var user = await _context.CreateAccounts.FirstOrDefaultAsync(u => u.Email == createAccountDTO.Email && u.Password == createAccountDTO.Password);
 
-            if (user == null)
+            if (user == null || !BCrypt.Net.BCrypt.Verify(createAccountDTO.Password, user.Password))
             {
                 return null;
             }
