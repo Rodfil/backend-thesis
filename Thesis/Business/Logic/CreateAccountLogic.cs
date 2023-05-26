@@ -37,14 +37,16 @@ namespace Thesis.Business.Logic
         public async Task<CreateAccountDTO> AuthenticateUser(CreateAccountDTO createAccountDTO)
         {
 
-            var user = await _context.CreateAccounts.FirstOrDefaultAsync(u => u.Email == createAccountDTO.Email && u.Password == createAccountDTO.Password);
+            var user = await _context.CreateAccounts.FirstOrDefaultAsync(u => u.UserId == createAccountDTO.UserId && u.Email == createAccountDTO.Email && u.Password == createAccountDTO.Password);
 
             if (user == null || !BCrypt.Net.BCrypt.Verify(createAccountDTO.Password, user.Password))
             {
                 return null;
             }
 
-            return Mappers.CreateAccountMappers.Map(user);
+            var createAccount = Mappers.CreateAccountMappers.Map(user);
+
+            return createAccount; 
         }
 
     }

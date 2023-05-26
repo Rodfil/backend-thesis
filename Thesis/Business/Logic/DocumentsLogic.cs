@@ -8,57 +8,54 @@ namespace Thesis.Business.Logic
 {
     public class DocumentsLogic
     {
-        private readonly MyDbContext _context;
+        private readonly MyDbContext _dbContext;
 
-        public DocumentsLogic (MyDbContext context)
+        public DocumentsLogic (MyDbContext dbContext)
         {
-            _context = context;
+            _dbContext = dbContext;
         }
 
         public async Task<List<DocumentsDTO>> GetDocuments()
-        {
-            var listOfDocuments = await _context.Documents
+        { 
+            var listOfDocuments = await _dbContext.Documents
                 .Select(x => Mappers.DocumentsMappers.Map(x))
-                .ToListAsync();
-           
+                .ToListAsync(); 
             return listOfDocuments;
         }
 
-        public async Task <Documents> CreateDocuments (DocumentsDTO documentsDTO)
+        public async Task <Documents> CreateDocuments (DocumentsPutPostDTO documentsPutPostDTO)
         {
-            var newDocuments = Mappers.DocumentsMappers.Map(documentsDTO);
-            newDocuments.IsVoter = true;
-            newDocuments.NonVoter = true;
-            await _context.AddAsync(newDocuments);
-            await _context.SaveChangesAsync();
+            var newDocuments = Mappers.DocumentsMappers.Map(documentsPutPostDTO);
 
+            await _dbContext.AddAsync(newDocuments);
+            await _dbContext.SaveChangesAsync();
             return newDocuments;
         } 
 
         public async Task<bool> UpdateDocuments (DocumentsPutPostDTO documentsDTO, Guid documentId)
         {
-            var documentsMain = _context.Documents.FirstOrDefault(x => x.DocumentId == documentId);
+            var documentsMain = _dbContext.Documents.FirstOrDefault(x => x.DocumentId == documentId);
 
             if (documentsMain == null)
             {
                 throw new Exception($"ID: {documentId} not Found");
             }
             Mappers.DocumentsMappers.Map(documentsDTO, documentsMain);
-            await _context.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync();
             return true;
         }
 
         public async Task<bool> DeleteDocuments (Guid documentId)
         {
-            var documentsMain = await _context.Documents.FirstOrDefaultAsync(x => x.DocumentId == documentId);
+            var documentsMain = await _dbContext.Documents.FirstOrDefaultAsync(x => x.DocumentId == documentId);
 
             if(documentsMain == null)
             {
                 throw new Exception($"ID: {documentId} not Found");
             }
 
-             _context.Documents.Remove(documentsMain);
-            await _context.SaveChangesAsync();
+            _dbContext.Documents.Remove(documentsMain);
+            await _dbContext.SaveChangesAsync();
             return true;
         }
     }

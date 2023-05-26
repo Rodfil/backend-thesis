@@ -12,8 +12,8 @@ namespace Thesis.Business.Mappers
                DocumentId = Guid.NewGuid(),
                DocumentName = documentsDTO.DocumentName,
                Price= documentsDTO.Price,
-               IsVoter = documentsDTO.IsVoter,
-               NonVoter = documentsDTO.NonVoter,
+                IsVoter = documentsDTO.IsVoter,
+                NonVoter = documentsDTO.NonVoter,
 
             };
 
@@ -27,8 +27,8 @@ namespace Thesis.Business.Mappers
                DocumentId= documentsMain.DocumentId,
                DocumentName= documentsMain.DocumentName,
                Price= documentsMain.Price,
-               IsVoter = documentsMain.IsVoter,
-               NonVoter = documentsMain.NonVoter,
+                IsVoter = documentsMain.IsVoter,
+                NonVoter = documentsMain.NonVoter,
             };
 
             return doumentsDTO; 

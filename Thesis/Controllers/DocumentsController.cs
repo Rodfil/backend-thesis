@@ -11,13 +11,13 @@ namespace Thesis.Controllers
     [ApiController]
     public class DocumentsController : ControllerBase
     {
-        private readonly MyDbContext _context;
+        private readonly MyDbContext _dbContext;
         private readonly DocumentsLogic _logic;
 
         public DocumentsController (MyDbContext context)
         {
-            _context = context;
-            _logic = new DocumentsLogic(_context);
+            _dbContext = context;
+            _logic = new DocumentsLogic(_dbContext);
         }
 
         [HttpGet]
@@ -27,9 +27,9 @@ namespace Thesis.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Documents>> CreateDocuments(DocumentsDTO documentsDTO)
+        public async Task<ActionResult<Documents>> CreateDocuments(DocumentsPutPostDTO documentsPutPostDTO)
         {
-            var createDocuments = await _logic.CreateDocuments(documentsDTO);
+            var createDocuments = await _logic.CreateDocuments(documentsPutPostDTO);
             return Ok(createDocuments);
         }
 

@@ -10,6 +10,7 @@ namespace SkanLogPH_API.API.DataAccess
 
         public DbSet<Documents> Documents { get; set; }
         public DbSet<CreateAccount> CreateAccounts { get; set; }
+        public DbSet<Requirements> Requirements { get; set; }
 
 
     }
