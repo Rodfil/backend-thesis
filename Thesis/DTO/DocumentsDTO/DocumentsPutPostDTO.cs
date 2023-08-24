@@ -1,4 +1,6 @@
-﻿namespace Thesis.DTO.DocumentsDTO
+﻿using Thesis.DTO.PurposeDTO;
+
+namespace Thesis.DTO.DocumentsDTO
 {
     public class DocumentsPutPostDTO
     {

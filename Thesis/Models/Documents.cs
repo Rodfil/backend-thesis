@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Thesis.DTO.PurposeDTO;
 
 namespace Thesis.Models
 {
@@ -11,5 +12,6 @@ namespace Thesis.Models
         public bool IsVoter { get; set; }
         public bool NonVoter {  get; set; }
 
+        //public List<PurposeDescriptionDTO> PurposeDescriptions { get; set; }
     }
 }

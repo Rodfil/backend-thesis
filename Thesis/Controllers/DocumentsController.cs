@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Egorventment.DataAccess;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SkanLogPH_API.API.DataAccess;
 using Thesis.Business.Logic;
 using Thesis.DTO.DocumentsDTO;
+using Thesis.DTO.PurposeDTO;
 using Thesis.Models;
 
 namespace Thesis.Controllers
@@ -14,7 +15,7 @@ namespace Thesis.Controllers
         private readonly MyDbContext _dbContext;
         private readonly DocumentsLogic _logic;
 
-        public DocumentsController (MyDbContext context)
+        public DocumentsController(MyDbContext context)
         {
             _dbContext = context;
             _logic = new DocumentsLogic(_dbContext);
@@ -26,11 +27,43 @@ namespace Thesis.Controllers
             return Ok(await _logic.GetDocuments());
         }
 
+
+        [HttpGet("Purpose/{documentId}")]
+        public async Task<ActionResult<List<DocumentsPurposePutPost>>> GetPurposeById(Guid documentId)
+        {
+            return Ok(await _logic.GetDocumentWithPurpose(documentId));
+        }
+
+
+
         [HttpPost]
         public async Task<ActionResult<Documents>> CreateDocuments(DocumentsPutPostDTO documentsPutPostDTO)
         {
             var createDocuments = await _logic.CreateDocuments(documentsPutPostDTO);
             return Ok(createDocuments);
+        }
+        [HttpPost("Purpose")]
+        public async Task<ActionResult<Documents>> PostDocumentPurpose(DocumentsPurposePutPost documentsPutPostDTO)
+        {
+            var createDocuments = await _logic.PostDocumentsPurpose(documentsPutPostDTO);
+            return Ok(createDocuments);
+        }
+
+        [HttpDelete("Purpose/{id}")]
+
+        public async Task<ActionResult<PurposeDescription>> DeletePurpose(Guid id)
+        {
+            var result = await _logic.DeletePurpose(id);
+            return Ok(result);
+        }
+
+
+        [HttpPut("Purpose/{id}")]
+
+        public async Task<ActionResult<PurposeDescription>> UpdateSpecificPurpose(PurposePutPost purposeDescription, Guid id)
+        {
+            var result = await _logic.UpdateSpecificPurpose(purposeDescription, id);
+            return Ok(result);
         }
 
         [HttpPut("{documentId}")]

@@ -9,7 +9,6 @@ namespace Thesis.Models
         public Guid RequirementId { get; set; }
         [ForeignKey("DocumentId")]
         public Guid DocumentId { get; set; }
-        public Documents? Documents { get; set; }
         public string? Description { get; set; }
 
     }

@@ -1,4 +1,7 @@
-﻿namespace Thesis.DTO.DocumentsDTO
+﻿using Thesis.DTO.PurposeDTO;
+using Thesis.Models;
+
+namespace Thesis.DTO.DocumentsDTO
 {
     public class DocumentsDTO
     {

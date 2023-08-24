@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Design;
 using Thesis.Models;
 
-namespace SkanLogPH_API.API.DataAccess
+namespace Egorventment.DataAccess
 {
     public class MyDbContext : DbContext
     {
@@ -11,7 +11,8 @@ namespace SkanLogPH_API.API.DataAccess
         public DbSet<Documents> Documents { get; set; }
         public DbSet<CreateAccount> CreateAccounts { get; set; }
         public DbSet<Requirements> Requirements { get; set; }
-
+        public DbSet<YourRequest> YourRequests { get; set; }
+        public DbSet<PurposeDescription> PurposeDescription { get; set; }
 
     }
 
@@ -20,7 +21,7 @@ namespace SkanLogPH_API.API.DataAccess
         public MyDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<MyDbContext>();
-            optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=thesis;Trusted_Connection=True;TrustServerCertificate=True;");
+            optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=thesisDb;Trusted_Connection=True;TrustServerCertificate=True;");
             //optionsBuilder.UseSqlServer("Server=localhost;Database=SkanlogPHTestDB;Trusted_Connection=True;TrustServerCertificate=True;");
 
             return new MyDbContext(optionsBuilder.Options);

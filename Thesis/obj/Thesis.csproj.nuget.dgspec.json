@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Skanlog\\OneDrive\\Documents\\My Thesis\\backend-thesis\\Thesis\\Thesis.csproj": {}
+    "C:\\Users\\63919\\Documents\\e-government\\backend-thesis\\Thesis\\Thesis.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Skanlog\\OneDrive\\Documents\\My Thesis\\backend-thesis\\Thesis\\Thesis.csproj": {
+    "C:\\Users\\63919\\Documents\\e-government\\backend-thesis\\Thesis\\Thesis.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Skanlog\\OneDrive\\Documents\\My Thesis\\backend-thesis\\Thesis\\Thesis.csproj",
+        "projectUniqueName": "C:\\Users\\63919\\Documents\\e-government\\backend-thesis\\Thesis\\Thesis.csproj",
         "projectName": "Thesis",
-        "projectPath": "C:\\Users\\Skanlog\\OneDrive\\Documents\\My Thesis\\backend-thesis\\Thesis\\Thesis.csproj",
-        "packagesPath": "C:\\Users\\Skanlog\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Skanlog\\OneDrive\\Documents\\My Thesis\\backend-thesis\\Thesis\\obj\\",
+        "projectPath": "C:\\Users\\63919\\Documents\\e-government\\backend-thesis\\Thesis\\Thesis.csproj",
+        "packagesPath": "C:\\Users\\63919\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\63919\\Documents\\e-government\\backend-thesis\\Thesis\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Skanlog\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\63919\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -64,6 +69,10 @@
               "target": "Package",
               "version": "[7.0.3, )"
             },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
@@ -88,7 +97,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

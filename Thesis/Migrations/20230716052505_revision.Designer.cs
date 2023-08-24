@@ -4,16 +4,20 @@ using Egorventment.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+
 
 #nullable disable
 
 namespace Thesis.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230716052505_revision")]
+    partial class revision
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,6 +25,29 @@ namespace Thesis.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Thesis.DTO.PurposeDTO.PurposeDescriptionDTO", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("DocumentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("DocumentsDocumentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DocumentsDocumentId");
+
+                    b.ToTable("PurposeDescriptionDTO");
+                });
 
             modelBuilder.Entity("Thesis.Models.CreateAccount", b =>
                 {
@@ -138,22 +165,37 @@ namespace Thesis.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("DocumentId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("DocumentId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("DocumentStatus")
-                        .HasColumnType("int");
+                    b.Property<string>("DocumentStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Purpose")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("YourRequests");
+                });
+
+            modelBuilder.Entity("Thesis.DTO.PurposeDTO.PurposeDescriptionDTO", b =>
+                {
+                    b.HasOne("Thesis.Models.Documents", null)
+                        .WithMany("PurposeDescriptions")
+                        .HasForeignKey("DocumentsDocumentId");
+                });
+
+            modelBuilder.Entity("Thesis.Models.Documents", b =>
+                {
+                    b.Navigation("PurposeDescriptions");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SkanLogPH_API.API.DataAccess;
+﻿using Egorventment.DataAccess;
+using Microsoft.EntityFrameworkCore;
 using Thesis.DTO.RequirementDTO;
 using Thesis.Models;
 
@@ -19,9 +19,9 @@ namespace Thesis.Business.Logic
             var listOfRequirements = new List<RequirementsDTO>();
             var checkRequirementsMain = await _dbContext.Requirements.Where(x => x.DocumentId == documentId).ToListAsync();
 
-            foreach (var rquirements in checkRequirementsMain)
+            foreach (var requirements in checkRequirementsMain)
             {
-                var requirementsDTO = Mappers.RequirementMappers.Map(rquirements);
+                var requirementsDTO = Mappers.RequirementMappers.Map(requirements);
                 listOfRequirements.Add(requirementsDTO);    
             }
 
@@ -30,7 +30,6 @@ namespace Thesis.Business.Logic
         public async Task<Requirements> CreateRequirements(RequirementsPutPostDTO requirementsPutPostDTO, Guid documentId)
         {
             var newRequirements = Mappers.RequirementMappers.Map(requirementsPutPostDTO);
-            newRequirements.DocumentId = documentId;
             await _dbContext.AddAsync(newRequirements);
             await _dbContext.SaveChangesAsync();
             return newRequirements;

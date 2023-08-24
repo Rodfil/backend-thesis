@@ -1,4 +1,5 @@
-﻿using Thesis.DTO.CreateAccountDTO;
+﻿
+using Thesis.DTO.CreateAccountDTO;
 using Thesis.Models;
 
 namespace Thesis.Business.Mappers
@@ -16,11 +17,10 @@ namespace Thesis.Business.Mappers
                 Birthdate = createAccountDTO.Birthdate,
                 VoterStatus = createAccountDTO.VoterStatus,
                 Address = createAccountDTO.Address,
-                ContactNumber = createAccountDTO.ContactNumber,
                 Email = createAccountDTO.Email,
                 Password = createAccountDTO.Password,
                 UserType = createAccountDTO.UserType,
-                //RegistrationStatus = createAccountDTO.RegistrationStatus,
+                RegistrationStatus = createAccountDTO.RegistrationStatus,
             };
 
             return createAccountMain;
@@ -37,11 +37,10 @@ namespace Thesis.Business.Mappers
                 Birthdate = createAccountMain.Birthdate,
                 VoterStatus = createAccountMain.VoterStatus,
                 Address = createAccountMain.Address,
-                ContactNumber = createAccountMain.ContactNumber,
                 Email = createAccountMain.Email,
                 Password = createAccountMain.Password,
                 UserType = createAccountMain.UserType,
-                //RegistrationStatus = createAccountMain.RegistrationStatus,
+                RegistrationStatus = createAccountMain.RegistrationStatus,
             };
 
             return createAccountDto;
@@ -58,11 +57,10 @@ namespace Thesis.Business.Mappers
                 Birthdate = createAccountPutPostDTO.Birthdate,
                 VoterStatus = createAccountPutPostDTO.VoterStatus,
                 Address = createAccountPutPostDTO.Address,
-                ContactNumber = createAccountPutPostDTO.ContactNumber,
                 Email = createAccountPutPostDTO.Email,
                 Password = createAccountPutPostDTO.Password,
                 UserType = createAccountPutPostDTO.UserType,
-                //RegistrationStatus = createAccountPutPostDTO.RegistrationStatus,
+                RegistrationStatus = createAccountPutPostDTO.RegistrationStatus,
             };
 
             return createAccountMain;
@@ -75,14 +73,23 @@ namespace Thesis.Business.Mappers
             createAccountMain.Gender = createAccountPutPostDTO.Gender;
             createAccountMain.Birthdate = createAccountPutPostDTO.Birthdate;
             createAccountMain.VoterStatus = createAccountPutPostDTO.VoterStatus;
-            createAccountMain.Address = createAccountPutPostDTO.Address;
-            createAccountMain.ContactNumber = createAccountPutPostDTO.ContactNumber;
+            createAccountMain.Address = createAccountPutPostDTO.Address; 
             createAccountMain.Email = createAccountPutPostDTO.Email;
             createAccountMain.Password = createAccountPutPostDTO.Password;
             createAccountMain.UserType = createAccountPutPostDTO.UserType;
-            //createAccountMain.RegistrationStatus = createAccountPutPostDTO.RegistrationStatus;
+            createAccountMain.RegistrationStatus = createAccountPutPostDTO.RegistrationStatus;
 
             return createAccountMain;
+        }
+
+        public static CreateAccount Map (LoginDTO loginDTO)
+        {
+            var loginUser = new CreateAccount
+            {
+                Email = loginDTO.Email,
+                Password = loginDTO.Password,
+            };
+            return loginUser;
         }
     }
 }
