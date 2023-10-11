@@ -34,8 +34,6 @@ namespace Thesis.Controllers
             return Ok(await _logic.GetDocumentWithPurpose(documentId));
         }
 
-
-
         [HttpPost]
         public async Task<ActionResult<Documents>> CreateDocuments(DocumentsPutPostDTO documentsPutPostDTO)
         {
@@ -43,7 +41,7 @@ namespace Thesis.Controllers
             return Ok(createDocuments);
         }
         [HttpPost("Purpose")]
-        public async Task<ActionResult<Documents>> PostDocumentPurpose(DocumentsPurposePutPost documentsPutPostDTO)
+        public async Task<ActionResult  > PostDocumentPurpose(DocumentsPurposePutPost documentsPutPostDTO)
         {
             var createDocuments = await _logic.PostDocumentsPurpose(documentsPutPostDTO);
             return Ok(createDocuments);
@@ -60,7 +58,7 @@ namespace Thesis.Controllers
 
         [HttpPut("Purpose/{id}")]
 
-        public async Task<ActionResult<PurposeDescription>> UpdateSpecificPurpose(PurposePutPost purposeDescription, Guid id)
+        public async Task<ActionResult> UpdateSpecificPurpose(PurposePutPost purposeDescription, Guid id)
         {
             var result = await _logic.UpdateSpecificPurpose(purposeDescription, id);
             return Ok(result);

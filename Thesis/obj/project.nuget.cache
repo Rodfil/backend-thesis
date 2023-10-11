@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KSvLvO7hQUPppGZYtCwkYtprXW2feGU08mlva6j0PBCqDSZPAmgsfNcVEODhSjWjt1mzcxkFQtW28mKGWYs+yw==",
+  "dgSpecHash": "9rSSbIaOvEc6+ojsaAEbrS+642CUKDfD2+V4LVEDSVpPHQ5XTy45MI9Oy/Gt04E6Z/osW7rIKV757FAoU5OizQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\63919\\Documents\\e-government\\backend-thesis\\Thesis\\Thesis.csproj",
+  "projectFilePath": "C:\\Users\\63919\\Documents\\e-government\\backend-thesis\\backend-thesis\\Thesis\\Thesis.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\63919\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\63919\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

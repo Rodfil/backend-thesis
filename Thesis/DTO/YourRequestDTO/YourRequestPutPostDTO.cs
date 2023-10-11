@@ -7,6 +7,6 @@
         public Guid DocumentId { get; set; }
         public string Purpose { get; set; }
         public int DocumentStatus { get; set; }
-        public string DateRequested { get; set; }
+        public DateTime DateRequested { get; set; }
     }
 }

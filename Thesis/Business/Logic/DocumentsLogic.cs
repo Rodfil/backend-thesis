@@ -13,7 +13,7 @@ namespace Thesis.Business.Logic
     {
         private readonly MyDbContext _dbContext;
 
-        public DocumentsLogic (MyDbContext dbContext)
+        public DocumentsLogic(MyDbContext dbContext)
         {
             _dbContext = dbContext;
         }
